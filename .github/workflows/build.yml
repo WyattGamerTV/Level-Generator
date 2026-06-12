@@ -32,9 +32,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Geode
-        uses: geode-sdk/setup-geode@main
-
       - name: Build Mod
         uses: geode-sdk/build-geode-mod@main
         with:
@@ -48,9 +45,10 @@ jobs:
     steps:
       - name: Merge Platforms
         uses: geode-sdk/build-geode-mod/combine@main
+        id: build
 
       - name: Upload Universal File
         uses: actions/upload-artifact@v4
         with:
           name: Level-Generator-Universal
-          path: geode
+          path: ${{ steps.build.outputs.build-output }}
