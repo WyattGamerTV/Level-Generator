@@ -29,9 +29,10 @@ jobs:
         with:
           target: ${{ matrix.config.target }}
           combine: true
+          cli-args: "--cmake-args=-DCMAKE_PREFIX_PATH=$GEODE_SDK"
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: Level-Generator-${{ matrix.config.target }}
-          path: build/Level-Generator.geode
+          path: build/Level-Generator.geode          path: build/Level-Generator.geode
