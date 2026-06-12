@@ -1,0 +1,9 @@
+{
+    "geode": "3.0.0",
+    "id": "wyattgamertv.level_generator",
+    "version": "v1.0.0",
+    "name": "Level Generator",
+    "developer": "WyattGamerTV",
+    "description": "A mod that automatically generates levels!",
+    "dependencies": []
+}
