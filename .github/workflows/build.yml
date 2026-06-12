@@ -11,14 +11,12 @@ jobs:
       matrix:
         config:
           - name: Android32
-            os: ubuntu-latest
             target: Android32
           - name: Android64
-            os: ubuntu-latest
             target: Android64
 
     name: ${{ matrix.config.name }}
-    runs-on: ${{ matrix.config.os }}
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
@@ -35,4 +33,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Level-Generator-${{ matrix.config.target }}
+          path: build/Level-Generator.geode          name: Level-Generator-${{ matrix.config.target }}
           path: build/Level-Generator.geode          path: build/Level-Generator.geode
