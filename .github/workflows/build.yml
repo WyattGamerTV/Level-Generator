@@ -1,37 +1,5 @@
 name: Build Geode Mod
-
-on:
-  push:
-    branches:
-      - main
-
+on: [push, pull_request]
 jobs:
   build:
-    strategy:
-      matrix:
-        config:
-          - name: Android32
-            target: Android32
-          - name: Android64
-            target: Android64
-
-    name: ${{ matrix.config.name }}
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Build Mod
-        uses: geode-sdk/build-geode-mod@main
-        with:
-          target: ${{ matrix.config.target }}
-          combine: true
-          cli-args: "--cmake-args=-DCMAKE_PREFIX_PATH=$GEODE_SDK"
-
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: Level-Generator-${{ matrix.config.target }}
-          path: build/Level-Generator.geode          name: Level-Generator-${{ matrix.config.target }}
-          path: build/Level-Generator.geode          path: build/Level-Generator.geode
+    uses: geode-sdk/build-geode-mod/.github/workflows/shared.yml@main
