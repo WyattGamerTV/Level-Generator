@@ -1,5 +1,23 @@
 name: Build Geode Mod
-on: [push, pull_request]
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   build:
-    uses: geode-sdk/build-geode-mod/.github/workflows/shared.yml@main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build
+        id: geode-build
+        uses: geode-sdk/build-geode-mod@main
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: Build-Output
+          path: ${{ steps.geode-build.outputs.build-output }}
